@@ -7,10 +7,10 @@ import (
 
 var sudoku [9][9]int8
 
-func Sudoku(sudoku string) {
+func Sudoku(sudokuStr string) {
 	elapsedTime := time.Now()
 
-	parse(sudoku)
+	parse(sudokuStr)
 
 	finishedSudoku := resolve()
 	printSudoku(finishedSudoku)

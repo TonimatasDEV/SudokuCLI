@@ -33,8 +33,8 @@ func tryValidNumbers(sudoku [9][9]int8, row, column int8) ([9][9]int8, bool) {
 		for _, value := range validNumbers {
 			sudoku, ok := addNumber(sudoku, value, row, column)
 			if ok {
-				sudoku, ok1 := tryValidNumbers(sudoku, nextRow, nextColumn)
-				if ok1 {
+				sudoku, ok := tryValidNumbers(sudoku, nextRow, nextColumn)
+				if ok {
 					return sudoku, true
 				}
 			}
@@ -47,9 +47,10 @@ func tryValidNumbers(sudoku [9][9]int8, row, column int8) ([9][9]int8, bool) {
 func whatNumbersArePossible(sudoku [9][9]int8, row, column int8) []int8 {
 	var numbers []int8
 
-	for i := 1; i <= 9; i++ {
-		if checkNumber(sudoku, int8(i), row, column) {
-			numbers = append(numbers, int8(i))
+	var i int8
+	for i = 1; i <= 9; i++ {
+		if checkNumber(sudoku, i, row, column) {
+			numbers = append(numbers, i)
 		}
 	}
 

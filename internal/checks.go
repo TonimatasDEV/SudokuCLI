@@ -8,8 +8,10 @@ func checkBox(sudoku [9][9]int8, n, row, column int8) bool {
 	minRow, maxRow := getBounds(row)
 	minColumn, maxColumn := getBounds(column)
 
-	for i := minRow; i <= maxRow; i++ {
-		for j := minColumn; j <= maxColumn; j++ {
+	var i int8
+	for i = minRow; i <= maxRow; i++ {
+		var j int8
+		for j = minColumn; j <= maxColumn; j++ {
 			if i == row && j == column {
 				continue
 			}
@@ -24,8 +26,9 @@ func checkBox(sudoku [9][9]int8, n, row, column int8) bool {
 }
 
 func checkLine(sudoku [9][9]int8, n, row, column int8) bool {
-	for i := 0; i < 9; i++ {
-		if int8(i) == row {
+	var i int8
+	for i = 0; i < 9; i++ {
+		if i == row {
 			continue
 		}
 
@@ -38,8 +41,9 @@ func checkLine(sudoku [9][9]int8, n, row, column int8) bool {
 }
 
 func checkColumn(sudoku [9][9]int8, n, row, column int8) bool {
-	for i := 0; i < 9; i++ {
-		if int8(i) == column {
+	var i int8
+	for i = 0; i < 9; i++ {
+		if i == column {
 			continue
 		}
 
