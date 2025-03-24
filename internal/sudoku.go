@@ -15,5 +15,5 @@ func Sudoku(sudoku string) {
 	finishedSudoku := resolve()
 	printSudoku(finishedSudoku)
 
-	fmt.Println(time.Now().Sub(elapsedTime).Milliseconds(), "ms")
+	fmt.Println("Time:", time.Now().Sub(elapsedTime).Milliseconds(), "ms")
 }
