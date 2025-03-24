@@ -5,15 +5,18 @@ import (
 	"time"
 )
 
-var sudoku [9][9]int8
-
-func Sudoku(sudokuStr string) {
+func Sudoku(sudokuStr string) [9][9]int8 {
 	elapsedTime := time.Now()
 
-	parse(sudokuStr)
+	sudoku := parse(sudokuStr)
 
-	finishedSudoku := resolve()
-	printSudoku(finishedSudoku)
+	if VerifySudoku(sudoku) {
+		sudoku = resolve(sudoku)
+		printSudoku(sudoku)
+	} else {
+		panic("Impossible sudoku")
+	}
 
 	fmt.Println("Time:", time.Now().Sub(elapsedTime).Milliseconds(), "ms")
+	return sudoku
 }

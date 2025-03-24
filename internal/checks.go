@@ -64,3 +64,23 @@ func getBounds(axis int8) (int8, int8) {
 		return 6, 8
 	}
 }
+
+func VerifySudoku(sudoku [9][9]int8) bool {
+	var i int8
+	for i = 0; i < 9; i++ {
+		var k int8
+		for k = 0; k < 9; k++ {
+			number := sudoku[i][k]
+
+			if number == 0 {
+				continue
+			}
+
+			if !checkNumber(sudoku, number, i, k) {
+				return false
+			}
+		}
+	}
+
+	return true
+}

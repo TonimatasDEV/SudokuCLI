@@ -1,12 +1,12 @@
 package internal
 
-func resolve() [9][9]int8 {
+func resolve(sudoku [9][9]int8) [9][9]int8 {
 	finishedSudoku, ok := tryValidNumbers(sudoku, 0, 0)
 
 	if ok {
 		return finishedSudoku
 	} else {
-		panic("Sudoku is invalid")
+		panic("Impossible sudoku")
 	}
 }
 

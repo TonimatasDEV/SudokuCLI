@@ -6,7 +6,9 @@ import (
 	"strings"
 )
 
-func parse(sudokuStr string) {
+func parse(sudokuStr string) [9][9]int8 {
+	var sudoku [9][9]int8
+
 	for i, line := range strings.Split(sudokuStr, ",") {
 		for k, char := range line {
 			integer, err := strconv.Atoi(string(char))
@@ -18,6 +20,8 @@ func parse(sudokuStr string) {
 			}
 		}
 	}
+
+	return sudoku
 }
 
 func printSudoku(sudoku [9][9]int8) {
