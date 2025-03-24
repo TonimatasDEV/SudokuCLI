@@ -1,6 +1,6 @@
 package internal
 
-func resolve() [9][9]int {
+func resolve() [9][9]int8 {
 	finishedSudoku, ok := tryValidNumbers(sudoku, 0, 0)
 
 	if ok {
@@ -10,7 +10,7 @@ func resolve() [9][9]int {
 	}
 }
 
-func tryValidNumbers(sudoku [9][9]int, row, column int) ([9][9]int, bool) {
+func tryValidNumbers(sudoku [9][9]int8, row, column int8) ([9][9]int8, bool) {
 	validNumbers := whatNumbersArePossible(sudoku, row, column)
 	nextRow := row
 	nextColumn := column + 1
@@ -44,19 +44,19 @@ func tryValidNumbers(sudoku [9][9]int, row, column int) ([9][9]int, bool) {
 	return sudoku, false
 }
 
-func whatNumbersArePossible(sudoku [9][9]int, row, column int) []int {
-	var numbers []int
+func whatNumbersArePossible(sudoku [9][9]int8, row, column int8) []int8 {
+	var numbers []int8
 
 	for i := 1; i <= 9; i++ {
-		if checkNumber(sudoku, i, row, column) {
-			numbers = append(numbers, i)
+		if checkNumber(sudoku, int8(i), row, column) {
+			numbers = append(numbers, int8(i))
 		}
 	}
 
 	return numbers
 }
 
-func addNumber(sudoku [9][9]int, n, row, column int) ([9][9]int, bool) {
+func addNumber(sudoku [9][9]int8, n, row, column int8) ([9][9]int8, bool) {
 	if checkNumber(sudoku, n, row, column) {
 		sudoku[row][column] = n
 		return sudoku, true

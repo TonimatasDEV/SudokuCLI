@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-var sudoku [9][9]int
+var sudoku [9][9]int8
 
 func Sudoku(sudoku string) {
 	elapsedTime := time.Now()

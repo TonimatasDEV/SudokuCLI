@@ -1,10 +1,10 @@
 package internal
 
-func checkNumber(sudoku [9][9]int, n, row, column int) bool {
+func checkNumber(sudoku [9][9]int8, n, row, column int8) bool {
 	return checkBox(sudoku, n, row, column) && checkLine(sudoku, n, row, column) && checkColumn(sudoku, n, row, column)
 }
 
-func checkBox(sudoku [9][9]int, n, row, column int) bool {
+func checkBox(sudoku [9][9]int8, n, row, column int8) bool {
 	minRow, maxRow := getBounds(row)
 	minColumn, maxColumn := getBounds(column)
 
@@ -23,9 +23,9 @@ func checkBox(sudoku [9][9]int, n, row, column int) bool {
 	return true
 }
 
-func checkLine(sudoku [9][9]int, n, row, column int) bool {
+func checkLine(sudoku [9][9]int8, n, row, column int8) bool {
 	for i := 0; i < 9; i++ {
-		if i == row {
+		if int8(i) == row {
 			continue
 		}
 
@@ -37,9 +37,9 @@ func checkLine(sudoku [9][9]int, n, row, column int) bool {
 	return true
 }
 
-func checkColumn(sudoku [9][9]int, n, row, column int) bool {
+func checkColumn(sudoku [9][9]int8, n, row, column int8) bool {
 	for i := 0; i < 9; i++ {
-		if i == column {
+		if int8(i) == column {
 			continue
 		}
 
@@ -51,7 +51,7 @@ func checkColumn(sudoku [9][9]int, n, row, column int) bool {
 	return true
 }
 
-func getBounds(axis int) (int, int) {
+func getBounds(axis int8) (int8, int8) {
 	if axis < 3 {
 		return 0, 2
 	} else if axis < 6 {

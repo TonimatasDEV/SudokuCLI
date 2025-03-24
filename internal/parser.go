@@ -11,7 +11,7 @@ func parse(sudokuStr string) {
 		for k, char := range line {
 			integer, err := strconv.Atoi(string(char))
 
-			sudoku[i][k] = integer
+			sudoku[i][k] = int8(integer)
 
 			if err != nil {
 				panic("Invalid format")
@@ -20,7 +20,7 @@ func parse(sudokuStr string) {
 	}
 }
 
-func printSudoku(sudoku [9][9]int) {
+func printSudoku(sudoku [9][9]int8) {
 	fmt.Println("-------------------------")
 	for row := range sudoku {
 		for column := range sudoku[row] {
