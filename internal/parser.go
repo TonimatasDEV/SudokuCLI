@@ -13,11 +13,11 @@ func parse(sudokuStr string) [9][9]int8 {
 		for k, char := range line {
 			integer, err := strconv.Atoi(string(char))
 
-			sudoku[i][k] = int8(integer)
-
 			if err != nil {
 				panic("Invalid format")
 			}
+
+			sudoku[i][k] = int8(integer)
 		}
 	}
 
