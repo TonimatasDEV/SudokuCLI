@@ -29,7 +29,8 @@ func main() {
 			fmt.Println("What do you want to do? If you don't know, use \"help\" command.")
 			break
 		case "play":
-			fmt.Println("Not implemented yet.")
+			actions.PlaySudoku(scanner)
+			fmt.Println("What do you want to do now?")
 			break
 		case "resolve":
 			actions.ResolveSudoku()

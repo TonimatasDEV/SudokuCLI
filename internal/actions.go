@@ -4,12 +4,8 @@ import (
 	"math/rand"
 )
 
-func checkNumber(sudoku [9][9]int, num, row, column int) bool {
+func CheckNumber(sudoku [9][9]int, num, row, column int) bool {
 	for i := 0; i < 9; i++ {
-		if i == row || i == column {
-			continue
-		}
-
 		if sudoku[row][i] == num || sudoku[i][column] == num {
 			return false
 		}
@@ -20,10 +16,6 @@ func checkNumber(sudoku [9][9]int, num, row, column int) bool {
 
 	for i := 0; i < 3; i++ {
 		for j := 0; j < 3; j++ {
-			if startRow+i == row && startColumn+j == column {
-				continue
-			}
-
 			if sudoku[startRow+i][startColumn+j] == num {
 				return false
 			}
@@ -40,7 +32,7 @@ func FillSudoku(sudoku *[9][9]int) bool {
 				nums := rand.Perm(9)
 
 				for _, num := range nums {
-					if checkNumber(*sudoku, num+1, row, column) {
+					if CheckNumber(*sudoku, num+1, row, column) {
 						sudoku[row][column] = num + 1
 						if FillSudoku(sudoku) {
 							return true
@@ -79,7 +71,7 @@ func SolveSudoku(sudoku *[9][9]int, solutions *int) {
 		for col := 0; col < 9; col++ {
 			if sudoku[row][col] == 0 {
 				for num := 1; num <= 9; num++ {
-					if checkNumber(*sudoku, num, row, col) {
+					if CheckNumber(*sudoku, num, row, col) {
 						sudoku[row][col] = num
 
 						SolveSudoku(sudoku, solutions)

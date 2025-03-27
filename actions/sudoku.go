@@ -2,8 +2,10 @@ package actions
 
 import (
 	"SudokuCLI/internal"
+	"bufio"
 	"fmt"
 	"strconv"
+	"strings"
 	"time"
 )
 
@@ -26,6 +28,57 @@ func SelectSudoku(sudokuStr string) {
 	} else {
 		internal.PrintlnWithElapsedTime("Sudoku parsed and selected.", startTime)
 		internal.PrintSudoku(selectedSudoku)
+	}
+}
+
+func PlaySudoku(scanner *bufio.Scanner) {
+	resolvedSudoku := selectedSudoku
+
+	internal.FillSudoku(&resolvedSudoku)
+
+	fmt.Println("Playing Sudoku...\n" +
+		"When I ask you, I want you to respond with the number you want to place and where, using the following format.\n" +
+		"If you want to exit, only type exit.\n" +
+		"Format: number,row,column - e.g. 5,2,1")
+
+	for {
+		if resolvedSudoku == selectedSudoku {
+			fmt.Println("Incredible! You finished the sudoku!")
+			break
+		}
+
+		internal.PrintSudoku(selectedSudoku)
+		fmt.Println("What number do you want to place in the Sudoku?")
+
+		scanner.Scan()
+		input := scanner.Text()
+		rawSplit := strings.Split(input, ",")
+
+		if rawSplit[0] == "exit" {
+			fmt.Println("Why? You didn't finished the sudoku.")
+			break
+		}
+
+		if len(rawSplit) != 3 {
+			fmt.Println("Please use the requested format.")
+			continue
+		}
+
+		number, err1 := strconv.Atoi(rawSplit[0])
+		row, err2 := strconv.Atoi(rawSplit[1])
+		column, err3 := strconv.Atoi(rawSplit[2])
+
+		if err1 != nil || err2 != nil || err3 != nil {
+			fmt.Println("Please use the requested format.")
+			continue
+		}
+
+		if resolvedSudoku[row-1][column-1] == number {
+			selectedSudoku[row-1][column-1] = number
+			fmt.Println("Nice!")
+		} else {
+			fmt.Println(fmt.Sprintf("Oh no! %d is incorrect number for row %d and column %d.", number, row, column))
+		}
 	}
 }
 
