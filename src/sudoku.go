@@ -1,4 +1,4 @@
-package actions
+package src
 
 import (
 	"SudokuCLI/internal"
