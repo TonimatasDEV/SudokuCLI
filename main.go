@@ -50,9 +50,11 @@ func main() {
 				" - play             Play the current selected sudoku.\n" +
 				" - resolve          Resolve the current selected sudoku.\n" +
 				" - generate         Generates a new random Sudoku and select it.\n" +
+				" - export           Export the sudoku with the program format.\n" +
 				" - exit             Exit the program.\n")
 			break
 		case "exit":
+			fmt.Println("Bye!")
 			os.Exit(0)
 		default:
 			fmt.Println("Unknown command. Use \"help\" command to know what commands exist.")
