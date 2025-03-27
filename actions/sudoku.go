@@ -12,7 +12,11 @@ var selectedSudoku [9][9]int
 func SelectSudoku(sudokuStr string) {
 	startTime := time.Now()
 
-	internal.Parse(&selectedSudoku, sudokuStr)
+	if !internal.Parse(&selectedSudoku, sudokuStr) {
+		selectedSudoku = [9][9]int{}
+		internal.PrintlnWithElapsedTime("Invalid sudoku format.", startTime)
+	}
+
 	solutions := 0
 	internal.SolveSudoku(&selectedSudoku, &solutions)
 
