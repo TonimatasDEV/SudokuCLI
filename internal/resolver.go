@@ -11,6 +11,10 @@ func resolve(sudoku [9][9]int8) [9][9]int8 {
 }
 
 func tryValidNumbers(sudoku [9][9]int8, row, column int8) ([9][9]int8, bool) {
+	if row > 8 {
+		return sudoku, true
+	}
+
 	validNumbers := whatNumbersArePossible(sudoku, row, column)
 	nextRow := row
 	nextColumn := column + 1
@@ -18,10 +22,6 @@ func tryValidNumbers(sudoku [9][9]int8, row, column int8) ([9][9]int8, bool) {
 	if nextColumn > 8 {
 		nextColumn = 0
 		nextRow++
-	}
-
-	if row > 8 {
-		return sudoku, true
 	}
 
 	if sudoku[row][column] != 0 {
