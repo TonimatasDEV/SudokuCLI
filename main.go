@@ -1,7 +1,7 @@
 package main
 
 import (
-	"SudokuCLI/internal"
+	"SudokuCLI/actions"
 	"bufio"
 	"fmt"
 	"os"
@@ -25,22 +25,22 @@ func main() {
 				fmt.Println("Please enter de sudoku with as argument.")
 			}
 
-			internal.SelectSudoku(args[0])
+			actions.SelectSudoku(args[0])
 			fmt.Println("What do you want to do? If you don't know, use \"help\" command.")
 			break
 		case "play":
 			fmt.Println("Not implemented yet.")
 			break
 		case "resolve":
-			internal.ResolveSudoku()
+			actions.ResolveSudoku()
 			fmt.Println("Easy one! Now, what do you want to do?")
 			break
 		case "generate":
-			internal.GenerateSudoku()
+			actions.GenerateSudoku()
 			fmt.Println("I think its good one. What do you want to do with it?")
 			break
 		case "export":
-			internal.ExportSudoku()
+			actions.ExportSudoku()
 			fmt.Println("Here is! What do you want to do?")
 			break
 		case "help":

@@ -6,9 +6,7 @@ import (
 	"strings"
 )
 
-func parse(sudokuStr string) [9][9]int8 {
-	var sudoku [9][9]int8
-
+func Parse(sudoku *[9][9]int, sudokuStr string) {
 	for i, line := range strings.Split(sudokuStr, ",") {
 		for k, char := range line {
 			integer, err := strconv.Atoi(string(char))
@@ -17,14 +15,12 @@ func parse(sudokuStr string) [9][9]int8 {
 				panic("Invalid format")
 			}
 
-			sudoku[i][k] = int8(integer)
+			sudoku[i][k] = integer
 		}
 	}
-
-	return sudoku
 }
 
-func printSudoku(sudoku [9][9]int8) {
+func PrintSudoku(sudoku [9][9]int) {
 	fmt.Println("-------------------------")
 	for row := range sudoku {
 		for column := range sudoku[row] {
