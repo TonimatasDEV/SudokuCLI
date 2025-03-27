@@ -94,6 +94,7 @@ func ResolveSudoku() {
 func GenerateSudoku() {
 	startTime := time.Now()
 
+	selectedSudoku = [9][9]int{}
 	internal.FillSudoku(&selectedSudoku)
 	internal.RemoveNumbers(&selectedSudoku, 30)
 
