@@ -26,18 +26,24 @@ func PrintSudoku(sudoku [9][9]int) {
 	fmt.Println("-------------------------")
 	for row := range sudoku {
 		for column := range sudoku[row] {
+			str := strconv.Itoa(sudoku[row][column])
+
+			if str == "0" {
+				str = "·"
+			}
+
 			switch column {
 			case 0:
-				fmt.Print("| ", sudoku[row][column], " ")
+				fmt.Print("| ", str, " ")
 				break
 			case 2, 5:
-				fmt.Print(sudoku[row][column], " | ")
+				fmt.Print(str, " | ")
 				break
 			case 8:
-				fmt.Print(sudoku[row][column], " |")
+				fmt.Print(str, " |")
 				break
 			default:
-				fmt.Print(sudoku[row][column], " ")
+				fmt.Print(str, " ")
 				break
 			}
 		}
