@@ -28,3 +28,29 @@ func ResolveSudoku() {
 	printlnWithElapsedTime("Sudoku resolved.", startTime)
 	printSudoku(selectedSudoku)
 }
+
+func GenerateSudoku() {
+	startTime := time.Now()
+	var sudoku [9][9]int8
+
+	for i := 0; i < 30; i++ {
+		number := randomNum(9)
+		row := randomNum(8)
+		column := randomNum(8)
+
+		if sudoku[row][column] == 0 {
+			newSudoku, ok := addNumber(sudoku, number, row, column)
+
+			if ok && VerifySudoku(newSudoku) {
+				sudoku = newSudoku
+				continue
+			}
+		}
+
+		i--
+	}
+
+	selectedSudoku = sudoku
+	printlnWithElapsedTime("", startTime)
+	printSudoku(selectedSudoku)
+}

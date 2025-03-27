@@ -35,7 +35,8 @@ func main() {
 			fmt.Println("Easy one! Now, what do you want to do?")
 			break
 		case "generate":
-			fmt.Println("Not implemented yet.")
+			internal.GenerateSudoku()
+			fmt.Println("I think its good one. What do you want to do with it?")
 			break
 		case "help":
 			fmt.Printf("Commands:\n" +
