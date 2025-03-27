@@ -1,7 +1,11 @@
 package internal
 
 func checkNumber(sudoku [9][9]int8, num, row, column int8) bool {
-	for i := 0; i < 9; i++ {
+	for i := int8(0); i < 9; i++ {
+		if i == row || i == column {
+			continue
+		}
+
 		if sudoku[row][i] == num || sudoku[i][column] == num {
 			return false
 		}
@@ -11,6 +15,10 @@ func checkNumber(sudoku [9][9]int8, num, row, column int8) bool {
 	startColumn := column / 3 * 3
 	for i := int8(0); i < 3; i++ {
 		for j := int8(0); j < 3; j++ {
+			if startRow+i == row && startColumn+j == column {
+				continue
+			}
+
 			if sudoku[startRow+i][startColumn+j] == num {
 				return false
 			}
