@@ -26,6 +26,7 @@ func main() {
 			}
 
 			internal.SelectSudoku(args[0])
+			fmt.Println("What do you want to do? If you don't know, use \"help\" command.")
 			break
 		case "play":
 			fmt.Println("Not implemented yet.")
@@ -37,6 +38,10 @@ func main() {
 		case "generate":
 			internal.GenerateSudoku()
 			fmt.Println("I think its good one. What do you want to do with it?")
+			break
+		case "export":
+			internal.ExportSudoku()
+			fmt.Println("Here is! What do you want to do?")
 			break
 		case "help":
 			fmt.Printf("Commands:\n" +

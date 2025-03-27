@@ -2,6 +2,7 @@ package internal
 
 import (
 	"fmt"
+	"strconv"
 	"time"
 )
 
@@ -18,7 +19,6 @@ func SelectSudoku(sudokuStr string) {
 		selectedSudoku = sudoku
 		printlnWithElapsedTime("Sudoku parsed and selected.", startTime)
 		printSudoku(selectedSudoku)
-		fmt.Println("What do you want to do? If you don't know, use \"help\" command.")
 	}
 }
 
@@ -53,4 +53,20 @@ func GenerateSudoku() {
 	selectedSudoku = sudoku
 	printlnWithElapsedTime("", startTime)
 	printSudoku(selectedSudoku)
+}
+
+func ExportSudoku() {
+	startTime := time.Now()
+
+	var str string
+	for column := 0; column < 9; column++ {
+		for row := 0; row < 9; row++ {
+			str += strconv.Itoa(int(selectedSudoku[row][column]))
+		}
+
+		str += ","
+	}
+
+	fmt.Println("Sudoku:", str)
+	printlnWithElapsedTime("Sudoku exported.", startTime)
 }
