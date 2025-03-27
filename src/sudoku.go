@@ -110,7 +110,9 @@ func ExportSudoku() {
 			str += strconv.Itoa(int(selectedSudoku[row][column]))
 		}
 
-		str += ","
+		if column < 8 {
+			str += ","
+		}
 	}
 
 	fmt.Println("Sudoku:", str)
