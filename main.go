@@ -20,14 +20,6 @@ func main() {
 		args := rawSplit[1:]
 
 		switch command {
-		case "select":
-			if len(command) < 2 {
-				fmt.Println("Please enter de sudoku with as argument.")
-			}
-
-			src.SelectSudoku(args[0])
-			fmt.Println("What do you want to do? If you don't know, use \"help\" command.")
-			break
 		case "play":
 			src.PlaySudoku(scanner)
 			fmt.Println("What do you want to do now?")
@@ -44,14 +36,23 @@ func main() {
 			src.ExportSudoku()
 			fmt.Println("Here is! What do you want to do?")
 			break
+		case "import":
+			if len(command) < 2 {
+				fmt.Println("Please enter the sudoku.")
+			}
+
+			src.ImportSudoku(args[0])
+			fmt.Println("What do you want to do? If you don't know, use \"help\" command.")
+			break
 		case "help":
-			fmt.Printf("Commands:\n" +
-				" - select <sudoku>  Select a sudoku. Format: firstRow,secondRow,thirdRow,...\n" +
+			fmt.Println("Commands:\n" +
+				" - help             This message.\n" +
+				" - generate         Generates a new random Sudoku and select it.\n" +
 				" - play             Play the current selected sudoku.\n" +
 				" - resolve          Resolve the current selected sudoku.\n" +
-				" - generate         Generates a new random Sudoku and select it.\n" +
 				" - export           Export the sudoku with the program format.\n" +
-				" - exit             Exit the program.\n")
+				" - import <sudoku>  Import a sudoku. Format: firstRow,secondRow,thirdRow,...\n" +
+				" - exit             Exit the program.")
 			break
 		case "exit":
 			fmt.Println("Bye!")

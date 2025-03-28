@@ -11,7 +11,7 @@ import (
 
 var selectedSudoku [9][9]int
 
-func SelectSudoku(sudokuStr string) {
+func ImportSudoku(sudokuStr string) {
 	startTime := time.Now()
 
 	if !internal.Parse(&selectedSudoku, sudokuStr) {
