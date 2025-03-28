@@ -55,7 +55,7 @@ func PlaySudoku(scanner *bufio.Scanner) {
 		rawSplit := strings.Split(input, ",")
 
 		if rawSplit[0] == "exit" {
-			fmt.Println("Why? You didn't finished the sudoku.")
+			fmt.Println("Why? You didn't finish the sudoku.")
 			break
 		}
 
